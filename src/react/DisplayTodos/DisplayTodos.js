@@ -3,8 +3,7 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import combineActions from "redux/actions/actions"
 
-// const ConnectedDisplayTodos = ({ todos }) => {
-  
+// const ConnectedDisplayTodos = ({ todos }) => {  
 //    let listeTodos = todos.map((item, index) => {
 //       return (
 //          <li key={index}>
@@ -12,7 +11,6 @@ import combineActions from "redux/actions/actions"
 //          </li>
 //       )
 //    })
-
 //    return (
 //       <>
 //          <ul>
@@ -24,7 +22,11 @@ import combineActions from "redux/actions/actions"
 //       </>
 //    )
 // }
-
+// const mapStateToProps = (state) => {
+//    return {
+//       todos: state.todos
+//    }
+// }
 // const mapStateToProps = (state) => {
 //    return {
 //       todos: state.todos
@@ -45,6 +47,7 @@ const DisplayTodos = () => {
       dispatch(combineActions.apiActions.fetchPubliApi())
    }, [dispatch])
   
+   // Affichage de la liste des tâches (ajout par l'utilisatueur)
    let listeTodos = todos.map((item, index) => {
       return (
          <li key={index}>
@@ -53,6 +56,7 @@ const DisplayTodos = () => {
       )
    })
 
+   // Affichager de la liste des posts isssus d'un appel API (voir useEffect)
    let listePubli = publications.map((item, index) => {
       return (
          <li key={index}>
@@ -79,12 +83,5 @@ const DisplayTodos = () => {
       </>
    )
 }
-
-// const mapStateToProps = (state) => {
-//    return {
-//       todos: state.todos
-//    }
-// }
-// const DisplayTodos = connect(mapStateToProps)(ConnectedDisplayTodos)
 
 export default DisplayTodos
