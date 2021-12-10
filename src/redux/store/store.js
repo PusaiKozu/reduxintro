@@ -5,8 +5,10 @@ import rootReducer from '../reducer/reducer'
 
 // Préparation du Middleware
 let middlewares = [
+   // Implémentation des "Custom Middleware"
    combineMiddleware.apiMiddleware.handleApi,
    combineMiddleware.todoMiddleware.handleTextValue,
+   // Implémentation de "Redux-Thunk" (gestion dans les action creator)
    thunk
 ]
 

@@ -20,7 +20,7 @@ const handleTextValue = ({ dispatch, getState }) => {
                // Refus de l'ajout de la nouvelle tâche (déclenchement erreur)
                let errTodo = {
                   type: "ERR_ADD_TODO",
-                  payload: null
+                  payload: motTrouve
                }
                return dispatch(errTodo)
             }

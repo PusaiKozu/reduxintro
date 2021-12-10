@@ -10,7 +10,7 @@ const initialState = {
 
 const todoReducer = (state = initialState, action) => {
    switch (action.type) {
-      case "ADD_TODO":         
+      case "ADD_TODO":
          return Object.assign({}, state, {
             todos: state.todos.concat(action.payload)
          })
@@ -20,6 +20,14 @@ const todoReducer = (state = initialState, action) => {
       case "DEL_TODO":
          // Traitement de mise à jour d'une tâche
          return // state modifié
+      case "ERR_ADD_TODO":
+         return {
+            ...state,
+            erreur: {
+               message: "Mot(s) interdit(s) : " + action.payload.toString(),
+               code: "666"
+            }            
+         }
       default:
          // Action de type "inconnu" -> retour du state actuel (sans modif)
          return state

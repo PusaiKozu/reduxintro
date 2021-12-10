@@ -5,7 +5,7 @@ import combineActions from "../../redux/actions/actions"
 
 const InputSaisie = () => {
    const [texte, setTexte] = useState("")
-   const errMessage = useSelector(state => state.erreur)
+   const erreurToDo = useSelector((state) => state.todoReducer.erreur)
 
    // mapDispatchToProps
    const dispatch = useDispatch()
@@ -14,7 +14,7 @@ const InputSaisie = () => {
       setTexte(event.target.value)
    }
 
-   const handleClic = () => {      
+   const handleClic = () => {
       let newTodo = {
          id: 1,
          libelle: texte,
@@ -24,11 +24,17 @@ const InputSaisie = () => {
       dispatch(combineActions.todoActions.ajouterTache(newTodo))
       setTexte("")
    }
-   let erreur = (errMessage) ? errMessage : ""
+
+   // Affichage du bloc de message d'erreur (Todo)
+   let erreurToDoBloc = ((erreurToDo.code) ?
+      <p>Erreur: {erreurToDo.message} - Code: {erreurToDo.code} </p>
+      :
+      "")
 
    return (
       <>
-         <p>{ erreur }</p>
+
+         <p>{erreurToDoBloc}</p>
          <input
             type="text"
             value={texte}
