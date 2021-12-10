@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useState } from 'react'
-import { ajouterTache } from "../../redux/actions/actions"
+import combineActions from "../../redux/actions/actions"
 
 
 const InputSaisie = () => {
@@ -20,7 +20,8 @@ const InputSaisie = () => {
          libelle: texte,
          termine: false
       }
-      dispatch(ajouterTache(newTodo))
+      console.log(combineActions.texte)
+      dispatch(combineActions.todoActions.ajouterTache(newTodo))
       setTexte("")
    }
    let erreur = (errMessage) ? errMessage : ""

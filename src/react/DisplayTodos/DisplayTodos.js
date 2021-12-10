@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { fetchPubliApi } from '../../redux/actions/actions'
+import combineActions from "redux/actions/actions"
 
 // const ConnectedDisplayTodos = ({ todos }) => {
   
@@ -33,15 +33,16 @@ import { fetchPubliApi } from '../../redux/actions/actions'
 // const DisplayTodos = connect(mapStateToProps)(ConnectedDisplayTodos)
 
 const DisplayTodos = () => {
-   const todos = useSelector((state) => state.todos)
-   const publications = useSelector((state) => state.publications)
+   const todos = useSelector((state) => state.todoReducer.todos)
+   const publications = useSelector((state) => state.apiReducer.publications)
+   //const erreur = useSelector((state) => state.apiReducer.erreur)
 
    const dispatch = useDispatch()
 
    // Déclencher l'action asynchrone fetchPubliApi dans les action creator
    useEffect(() => {
       console.log("dispatch Api")
-      dispatch(fetchPubliApi())
+      dispatch(combineActions.apiActions.fetchPubliApi())
    }, [dispatch])
   
    let listeTodos = todos.map((item, index) => {

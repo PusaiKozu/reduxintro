@@ -9,7 +9,7 @@ export const handleTextValue = ({ dispatch, getState }) => {
             console.log("[Debug] Analyse chaine de caractères")
 
 
-            let motTrouve = state.listWords.filter((mot) => {
+            let motTrouve = state.todoReducer.listWords.filter((mot) => {
                return (
                   action.payload.libelle.includes(mot)
                )
@@ -32,3 +32,7 @@ export const handleTextValue = ({ dispatch, getState }) => {
       }
    }
 }
+
+// export const todoMiddleware = {
+   
+// }
