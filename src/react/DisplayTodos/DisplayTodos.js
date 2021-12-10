@@ -35,7 +35,7 @@ import combineActions from "redux/actions/actions"
 const DisplayTodos = () => {
    const todos = useSelector((state) => state.todoReducer.todos)
    const publications = useSelector((state) => state.apiReducer.publications)
-   //const erreur = useSelector((state) => state.apiReducer.erreur)
+   const erreur = useSelector((state) => state.apiReducer.erreur)
 
    const dispatch = useDispatch()
 
@@ -61,8 +61,15 @@ const DisplayTodos = () => {
       )
    })
 
+   // Affichage du bloc de message d'erreur
+   let erreurBloc = ((erreur.code) ?
+      <p>Erreur: {erreur.message.texte} - Code: {erreur.code} </p>
+      :
+      "")
+
    return (
       <>
+         {erreurBloc}
          <ul>
             {listeTodos}
          </ul>

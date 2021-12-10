@@ -3,9 +3,9 @@ const initialState = {
    publications: [],
    erreur: {
       message: {
-         texte: "Table déjà en écriture"
+         texte: ""
       },
-      code: 180
+      code: 0
    }
 }
 
@@ -14,7 +14,7 @@ const apiReducer = (state = initialState, action) => {
       case "FETCH_API_SUCCESS":
          return { ...state, publications: state.publications.concat(action.payload) }
       case "FETCH_API_KO":
-         return state
+         return {...state, erreur: { message: { texte: action.payload}, code: "201"}}
       default:
          // Action de type "inconnu" -> retour du state actuel (sans modif)
          return state
