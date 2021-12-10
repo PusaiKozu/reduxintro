@@ -6,7 +6,10 @@ const fetchPubliApi = () => {
          .then((reponse) => reponse.json())
          .then((json) => {
             console.log(json)
-            // Passage vers la gestion d'erreur forcé
+            // Passage correct de l'API
+            //dispatch({type: "FETCH_API_SUCCESS", payload: json})
+
+            // Passage vers la gestion d'erreur (forçage de test)
             dispatch(fetchPubliKo("Impossible d'accéder à l'API."))
          })
          .catch((erreur) => {
