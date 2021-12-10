@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <InputSaisie />
-      <DisplayTodos babar="Rambo" />
+      <DisplayTodos />
     </>
   );
 }
