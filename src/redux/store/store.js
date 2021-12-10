@@ -16,6 +16,7 @@ let middlewares = [
 // Appel au bras droit -> le(s) Reducer(s)
 const store = createStore(
    rootReducer,
+   // Application des middlewares de l'application (ligne 7)
    applyMiddleware(...middlewares)   
 )
 
